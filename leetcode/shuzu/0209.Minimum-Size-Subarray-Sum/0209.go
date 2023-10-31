@@ -1,5 +1,6 @@
 package shuze
 
+// 时间复杂度O(n)
 func minSubArrayLen(target int, nums []int) int {
 	left, sum, res := 0, 0, len(nums)+1
 	for right, val := range nums {
