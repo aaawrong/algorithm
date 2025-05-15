@@ -1,1 +1,1 @@
-# Leetcode go版本记录
+# Leetcode go
