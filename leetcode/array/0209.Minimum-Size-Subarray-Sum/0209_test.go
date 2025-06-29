@@ -1,4 +1,4 @@
-package shuze
+package array
 
 import (
 	"fmt"

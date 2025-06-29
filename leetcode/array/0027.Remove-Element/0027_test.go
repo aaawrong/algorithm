@@ -1,4 +1,4 @@
-package shuzu
+package array
 
 import (
 	"fmt"
@@ -24,9 +24,7 @@ type ans27 struct {
 }
 
 func Test_Problem27(t *testing.T) {
-
 	qs := []question27{
-
 		{
 			para27{[]int{0, 1, 0, 3, 0, 12}, 0},
 			ans27{3},
@@ -36,7 +34,6 @@ func Test_Problem27(t *testing.T) {
 		//	para27{[]int{0, 1, 0, 3, 0, 0, 0, 0, 1, 12}, 0},
 		//	ans27{4},
 		//},
-
 	}
 
 	fmt.Printf("------------------------Leetcode Problem 27------------------------\n")

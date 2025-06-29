@@ -1,4 +1,4 @@
-package shuzu
+package array
 
 import (
 	"fmt"

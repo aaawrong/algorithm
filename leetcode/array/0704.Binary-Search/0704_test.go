@@ -1,4 +1,4 @@
-package shuzu
+package array
 
 import (
 	"fmt"
@@ -24,7 +24,6 @@ type ans704 struct {
 }
 
 func Test_Problem704(t *testing.T) {
-
 	qs := []question704{
 		{
 			para704{[]int{-1, 0, 3, 5, 9, 12}, 9},
@@ -42,7 +41,8 @@ func Test_Problem704(t *testing.T) {
 	for _, q := range qs {
 		//_, p := q.ans704, q.para704
 		p, _ := q.para704, q.ans704
-		fmt.Printf("【input】:%v       【output】:%v\n", p, search704(p.nums, p.target))
+		//fmt.Printf("【input】:%v       【output】:%v\n", p, search704(p.nums, p.target))
+		fmt.Printf("【input】:%v       【output】:%v\n", p, search704_2(p.nums, p.target))
 	}
 	fmt.Printf("\n\n\n")
 }
