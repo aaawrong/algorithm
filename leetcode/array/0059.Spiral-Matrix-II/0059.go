@@ -19,19 +19,19 @@ func generateMatrix(n int) [][]int {
 	for loop > 0 {
 		i, j := startx, starty
 
-		for ; j < n-offset; j++ {
+		for ; j < n-offset; j++ { // 左上 -> 右上左边一个
 			res[i][j] = count
 			count++
 		}
-		for ; i < n-offset; i++ {
+		for ; i < n-offset; i++ { // 右上 -> 右下上边一个
 			res[i][j] = count
 			count++
 		}
-		for ; j > starty; j-- {
+		for ; j > starty; j-- { // 右下 -> 左下右边一个
 			res[i][j] = count
 			count++
 		}
-		for ; i > startx; i-- {
+		for ; i > startx; i-- { // 坐下 -> 左上下边一个
 			res[i][j] = count
 			count++
 		}
