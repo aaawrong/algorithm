@@ -1,4 +1,4 @@
-package lianbiao
+package linked_list
 
 import (
 	"algorithm/leetcode/structures"

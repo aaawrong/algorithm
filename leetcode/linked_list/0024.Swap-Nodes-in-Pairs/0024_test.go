@@ -1,9 +1,10 @@
-package lianbiao
+package linked_list
 
 import (
-	"algorithm/leetcode/structures"
 	"fmt"
 	"testing"
+
+	"algorithm/leetcode/structures"
 )
 
 type question24 struct {
