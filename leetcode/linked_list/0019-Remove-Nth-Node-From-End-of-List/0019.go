@@ -10,7 +10,7 @@ type ListNode = structures.ListNode
 
 // 时间复杂度：O(n)
 // 空间复杂度：O(1)
-func removeNthFromEnd(head *ListNode, n int) *ListNode {
+func removeNthFromEnd2(head *ListNode, n int) *ListNode {
 	dummyHead := &ListNode{Next: head}
 	slow, fast := dummyHead, dummyHead
 	for i := 0; i <= n; i++ {
@@ -25,4 +25,34 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	}
 	slow.Next = slow.Next.Next
 	return dummyHead.Next
+}
+
+// 一次遍历
+func removeNthFromEnd(head *ListNode, n int) *ListNode {
+	dummy := &ListNode{Next: head} // 虚拟头节点简化边界处理
+	slow, fast := dummy, dummy
+
+	for fast != nil {
+		if n < 0 { // 当n<0时说明快指针已领先n+1步，启动慢指针
+			slow = slow.Next
+		}
+		fast = fast.Next
+		n-- // 动态递减计数器
+	}
+	slow.Next = slow.Next.Next // 删除目标节点
+	return dummy.Next
+}
+
+// 使用栈
+// 时间复杂度：O(n)
+// 空间复杂度：O(n)
+func removeNthFromEnd3(head *ListNode, n int) *ListNode {
+	nodes := []*ListNode{}
+	dummy := &ListNode{Next: head}
+	for node := dummy; node != nil; node = node.Next {
+		nodes = append(nodes, node)
+	}
+	prev := nodes[len(nodes)-1-n]
+	prev.Next = prev.Next.Next
+	return dummy.Next
 }
