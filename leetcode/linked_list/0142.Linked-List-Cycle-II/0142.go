@@ -4,7 +4,7 @@ import "algorithm/leetcode/structures"
 
 // 环形链表II
 // 力扣：
-// https://leetcode.cn/problems/linked-list-cycle-ii/description/
+// https://leetcode.cn/problems/linked-list-cycle-ii/description
 // 随想录：
 // https://programmercarl.com/0142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II.html#%E6%80%9D%E8%B7%AF
 
