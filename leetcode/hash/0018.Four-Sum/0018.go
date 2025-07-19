@@ -4,11 +4,11 @@ import "sort"
 
 // 四数之和
 // 力扣：
-//
+// https://leetcode.cn/problems/4sum
 // 随想录：
 // https://programmercarl.com/0018.%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C.html#%E6%80%9D%E8%B7%AF
 
-// 时间复杂度：O(n^2)
+// 时间复杂度：O(n^3)
 // 空间复杂度：O(n)
 func fourSum(nums []int, target int) [][]int {
 	if len(nums) < 4 {
