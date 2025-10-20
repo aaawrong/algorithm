@@ -1,6 +1,6 @@
 package stackAndQueue
 
-// 重复的子字符串
+// 用队列实现栈
 // 力扣：
 // https://leetcode.cn/problems/implement-stack-using-queues
 // 随想录：
