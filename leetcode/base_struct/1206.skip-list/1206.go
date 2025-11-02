@@ -3,11 +3,8 @@ package base_struct
 import "math/rand"
 
 // 实现跳表
-// 力扣：
-
-// 双指针
-// 时间复杂度：O(n)
-// 空间复杂度：O(1)
+// 力扣：https://leetcode.cn/problems/design-skiplist/
+// 参考：https://zhuanlan.zhihu.com/p/620291031
 
 type Skiplist struct {
 	head *node
