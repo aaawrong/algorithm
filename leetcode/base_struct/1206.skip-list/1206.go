@@ -6,6 +6,24 @@ import "math/rand"
 // 力扣：https://leetcode.cn/problems/design-skiplist/
 // 参考：https://zhuanlan.zhihu.com/p/620291031
 
+// Level 3:  1 ----------> 9
+// Level 2:  1 ----> 5 --> 9
+// Level 1:  1 -> 3 -> 5 -> 7 -> 9
+// Level 0:  1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
+// 每一层是一条有序链表；
+// 所有层共用同一个头节点 head；
+// 每层的指针都保存在 head.nexts[i] 中。
+// node7，它出现在 Level 2、Level 1、Level 0 三层：
+//
+//	node7.nexts = []*node{
+//		 node8, // Level 0 下一节点是 8
+//		 node9, // Level 1 下一节点是 9
+//		 node12 // Level 2 下一节点是 12
+//	}
+//
+// nexts[0] → 0 层的右边节点
+// nexts[1] → 1 层的右边节点
+// nexts[2] → 2 层的右边节点
 type Skiplist struct {
 	head *node
 }
@@ -48,10 +66,11 @@ func (s *Skiplist) search(key int) *node {
 }
 
 // roll 骰子，决定一个待插入的新节点在 skiplist 中最高层对应的 index
+// 例如 level=2 → 该节点出现在 Level 2, 1, 0
 func (s *Skiplist) roll() int {
-	var level int
-	// 每次投出 1，则层数加 1
-	for rand.Int() > 0 {
+	level := 0
+	// 每次 50% 的概率升一层
+	for rand.Float64() < 0.5 {
 		level++
 	}
 	return level
@@ -82,15 +101,16 @@ func (s *Skiplist) Put(key, val int) {
 
 	// 从头节点的最高层出发
 	move := s.head
-	for level := level; level >= 0; level-- {
+	for _level := level; _level >= 0; _level-- {
 		// 向右遍历，直到右侧节点不存在或者 key 值大于 key
-		for move.nexts[level] != nil && move.nexts[level].key < key {
-			move = move.nexts[level]
+		// 前面已经判断过=的情况
+		for move.nexts[_level] != nil && move.nexts[_level].key < key {
+			move = move.nexts[_level]
 		}
 
 		// 调整指针关系，完成新节点的插入
-		newNode.nexts[level] = move.nexts[level]
-		move.nexts[level] = &newNode
+		newNode.nexts[_level] = move.nexts[_level]
+		move.nexts[_level] = &newNode
 	}
 }
 
