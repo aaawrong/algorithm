@@ -33,7 +33,7 @@ func TestSkiplistBasic(t *testing.T) {
 	for k, v := range data {
 		s.Put(k, v)
 	}
-
+	s.Print()
 	// 测试 Get
 	for k, v := range data {
 		if val, ok := s.Get(k); !ok || val != v {

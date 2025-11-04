@@ -1,6 +1,9 @@
 package base_struct
 
-import "math/rand"
+import (
+	"fmt"
+	"math/rand"
+)
 
 // 实现跳表
 // 力扣：https://leetcode.cn/problems/design-skiplist/
@@ -218,4 +221,18 @@ func (s *Skiplist) floor(target int) *node {
 
 	// move 是首层中 key 值小于 target 且最接近 target 的节点，直接返回 move 即可
 	return move
+}
+
+func (s *Skiplist) Print() {
+	fmt.Println("====== Skiplist ======")
+	for level := len(s.head.nexts) - 1; level >= 0; level-- {
+		fmt.Printf("Level %d: ", level)
+		_node := s.head.nexts[level]
+		for _node != nil {
+			fmt.Printf("%d ", _node.key)
+			_node = _node.nexts[level]
+		}
+		fmt.Println()
+	}
+	fmt.Println("======================")
 }
