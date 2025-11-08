@@ -1,69 +1,43 @@
 package stackAndQueue
 
 import (
-	"fmt"
 	"testing"
 )
 
-type question20 struct {
-	para20
-	ans20
-}
-
-// para 是参数
-// one 代表第一个参数
-type para20 struct {
-	one string
-}
-
-// ans 是答案
-// one 代表第一个答案
-type ans20 struct {
-	one bool
-}
-
-func Test_Problem20(t *testing.T) {
-
-	qs := []question20{
-
-		//{
-		//	para20{"()[]{}"},
-		//	ans20{true},
-		//},
-		//{
-		//	para20{"(]"},
-		//	ans20{false},
-		//},
+func TestEvalRPN(t *testing.T) {
+	tests := []struct {
+		name     string
+		tokens   []string
+		expected int
+	}{
 		{
-			para20{"({[]})"},
-			ans20{true},
+			name:     "基本加法",
+			tokens:   []string{"2", "1", "+", "3", "*"},
+			expected: 9, // (2 + 1) * 3 = 9
 		},
 		{
-			para20{"(){[({[]})]}"},
-			ans20{true},
+			name:     "包含除法",
+			tokens:   []string{"4", "13", "5", "/", "+"},
+			expected: 6, // 4 + (13 / 5) = 4 + 2 = 6
 		},
 		{
-			para20{"((([[[{{{"},
-			ans20{false},
+			name:     "简单减法",
+			tokens:   []string{"3", "4", "-"},
+			expected: -1,
 		},
 		{
-			para20{"(())]]"},
-			ans20{false},
-		},
-		{
-			para20{""},
-			ans20{true},
-		},
-		{
-			para20{"["},
-			ans20{false},
+			name:     "单个数字",
+			tokens:   []string{"42"},
+			expected: 42,
 		},
 	}
 
-	fmt.Printf("------------------------Leetcode Problem 20------------------------\n")
-
-	for _, q := range qs {
-		_, p := q.ans20, q.para20
-		fmt.Printf("【input】:%v       【output】:%v\n", p, isValid(p.one))
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := evalRPN(tt.tokens)
+			if got != tt.expected {
+				t.Errorf("evalRPN(%v) = %d; want %d", tt.tokens, got, tt.expected)
+			}
+		})
 	}
 }
