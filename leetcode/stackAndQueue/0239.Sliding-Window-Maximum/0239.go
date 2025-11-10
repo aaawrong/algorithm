@@ -15,7 +15,7 @@ func maxSlidingWindow1(nums []int, k int) []int {
 	}
 
 	n := len(nums)
-	res := make([]int, 0, n-k)
+	res := make([]int, 0, n-k+1)
 	for i := 0; i <= n-k; i++ {
 		_max := nums[i]
 		for j := 1; j < k; j++ {
@@ -27,4 +27,27 @@ func maxSlidingWindow1(nums []int, k int) []int {
 	}
 
 	return res
+}
+
+// 时间复杂度：O(n)
+// 空间复杂度：O(n)
+func maxSlidingWindow(nums []int, k int) []int {
+	if len(nums) == 0 || len(nums) < k {
+		return make([]int, 0)
+	}
+	window := make([]int, 0, k) // 存储对应的索引位置
+	result := make([]int, 0, len(nums)-k+1)
+	for i, v := range nums { // 最左侧只保留当前窗口最大值
+		if i >= k && window[0] <= i-k {
+			window = window[1:]
+		}
+		for len(window) > 0 && nums[window[len(window)-1]] < v {
+			window = window[0 : len(window)-1]
+		}
+		window = append(window, i)
+		if i >= k-1 {
+			result = append(result, nums[window[0]])
+		}
+	}
+	return result
 }
