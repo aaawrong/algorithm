@@ -30,23 +30,25 @@ func maxSlidingWindow1(nums []int, k int) []int {
 }
 
 // 时间复杂度：O(n)
-// 空间复杂度：O(n)
+// 空间复杂度：O(k)
 func maxSlidingWindow(nums []int, k int) []int {
 	if len(nums) == 0 || len(nums) < k {
-		return make([]int, 0)
+		return []int{}
 	}
 	window := make([]int, 0, k) // 存储对应的索引位置
 	result := make([]int, 0, len(nums)-k+1)
-	for i, v := range nums { // 最左侧只保留当前窗口最大值
-		if i >= k && window[0] <= i-k {
+	for i, v := range nums {
+		if i >= k && window[0] <= i-k { // 滑动窗口移除最左侧元素
 			window = window[1:]
 		}
-		for len(window) > 0 && nums[window[len(window)-1]] < v {
+
+		for len(window) > 0 && nums[window[len(window)-1]] < v { // 最左侧只保留当前窗口最大值
 			window = window[0 : len(window)-1]
 		}
 		window = append(window, i)
+
 		if i >= k-1 {
-			result = append(result, nums[window[0]])
+			result = append(result, nums[window[0]]) // 当遍历到索引 k-1（即第k个元素）时，才形成了第一个完整的窗口
 		}
 	}
 	return result
