@@ -10,7 +10,7 @@ import "container/heap"
 
 // 时间复杂度：O(nlogk)
 // 空间复杂度：O(n)
-// 小顶堆实现，1. 维护一个大小始终为K的小顶堆 2. 新元素频率高于堆顶时，替换堆顶
+// 小顶堆实现1. 维护一个大小始终为K的小顶堆 2. 新元素频率高于堆顶时，替换堆顶
 func topKFrequent(nums []int, k int) []int {
 	m := make(map[int]int)
 	for _, n := range nums {
