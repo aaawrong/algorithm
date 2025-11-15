@@ -36,7 +36,7 @@ func topKFrequent(nums []int, k int) []int {
 	return result
 }
 
-// Item define
+// Item define 1
 type Item struct {
 	key   int
 	count int
