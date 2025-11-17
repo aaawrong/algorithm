@@ -22,7 +22,7 @@ func dfs(n, k, start int, path []int, res *[][]int) {
 	if len(path) == k {
 		tmp := make([]int, len(path))
 		copy(tmp, path)
-		*res = append(*res, path)
+		*res = append(*res, tmp)
 		return
 	}
 
