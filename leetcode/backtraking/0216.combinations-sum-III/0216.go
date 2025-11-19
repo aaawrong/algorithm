@@ -9,7 +9,7 @@ package base_struct
 // 空间复杂度：O(n)
 
 func combine(n int, k int) [][]int {
-
+	return nil
 }
 
 // path表示路径已经存的元素
