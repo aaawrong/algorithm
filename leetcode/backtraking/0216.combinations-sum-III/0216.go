@@ -8,12 +8,29 @@ package base_struct
 // 时间复杂度：O(n * 2^n)， 遍历节点 O(2^n)，copy操作O(n)
 // 空间复杂度：O(n)
 
-func combine(n int, k int) [][]int {
-	return nil
+func combinationSum3(k int, n int) [][]int {
+	if k == 0 {
+		return [][]int{}
+	}
+	path, res := []int{}, [][]int{}
+	dfs(k, n, 1, path, &res)
+	return res
 }
 
-// path表示路径已经存的元素
-func dfs(n, k, start int, path []int, res *[][]int) {
-
-	return
+func dfs(k, target, start int, path []int, res *[][]int) {
+	if target == 0 {
+		if len(path) == k {
+			tmp := make([]int, len(path))
+			copy(tmp, path)
+			*res = append(*res, tmp)
+		}
+		return
+	}
+	for i := start; i < 10; i++ {
+		if target >= i {
+			path = append(path, i)
+			dfs(k, target-i, i+1, path, res)
+			path = path[:len(path)-1]
+		}
+	}
 }
