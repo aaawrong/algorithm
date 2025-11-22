@@ -18,14 +18,12 @@ func combinationSum3(k int, n int) [][]int {
 }
 
 func dfs(k, target, start int, path []int, res *[][]int) {
-	if target == 0 {
-		if len(path) == k {
-			tmp := make([]int, len(path))
-			copy(tmp, path)
-			*res = append(*res, tmp)
-		}
-		return
+	if target == 0 && len(path) == k {
+		tmp := make([]int, len(path))
+		copy(tmp, path)
+		*res = append(*res, tmp)
 	}
+
 	for i := start; i < 10; i++ {
 		if target >= i {
 			path = append(path, i)
