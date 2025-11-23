@@ -112,7 +112,6 @@ func letterFunc(path string, digits string) {
 		path = path[0 : len(path)-1]
 	}
 }
-
 func letterCombinationsBT2(digits string) []string {
 	if digits == "" {
 		return []string{}
@@ -128,9 +127,9 @@ func dfs(path string, digits string, result *[]string) {
 		return
 	}
 
-	k := digits[0:1]
+	k := digits[0:1] // 注意这里是[0:1] k是string，k[0]是byte
 	digits = digits[1:]
-	for i := 0; i < len(dict[k]); i++ {
+	for i := 0; i <= len(dict[k])-1; i++ {
 		path += dict[k][i]
 		dfs(path, digits, result)
 		path = path[:len(path)-1]
