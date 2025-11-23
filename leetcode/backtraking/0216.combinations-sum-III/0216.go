@@ -1,4 +1,4 @@
-package base_struct
+package backtraking
 
 // 组合
 // 力扣：
