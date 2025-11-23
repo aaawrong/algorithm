@@ -114,10 +114,10 @@ func letterFunc(path string, digits string) {
 }
 
 func letterCombinationsBT2(digits string) []string {
-	_result := []string{}
 	if digits == "" {
-		return _result
+		return []string{}
 	}
+	_result := []string{}
 	dfs("", digits, &_result)
 	return _result
 }
