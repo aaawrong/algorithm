@@ -89,10 +89,10 @@ var dict = map[string][]string{
 }
 
 func letterCombinationsBT(digits string) []string {
-	result = []string{}
 	if digits == "" {
-		return result
+		return []string{}
 	}
+	result = []string{}
 	letterFunc("", digits)
 	return result
 }
