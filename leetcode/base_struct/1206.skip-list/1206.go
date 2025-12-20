@@ -161,7 +161,7 @@ func (s *Skiplist) Range(start, end int) [][2]int {
 
 	// 从 ceilNode 首层出发向右遍历，把所有位于 [start,end] 区间内的节点统统返回
 	var res [][2]int
-	for move := ceilNode; move != nil && move.key <= end; move = move.nexts[0] {
+	for move := ceilNode; move != nil && move.key <= end; move = move.nexts[0] { //最底层的才有完整的数据
 		res = append(res, [2]int{move.key, move.val})
 	}
 	return res
@@ -176,7 +176,7 @@ func (s *Skiplist) ceiling(target int) *node {
 		for move.nexts[level] != nil && move.nexts[level].key < target {
 			move = move.nexts[level]
 		}
-		// 如果 key 值等于 targe 的 kv 对存在，则直接返回
+		// 如果 key 值等于 target 的 kv 对存在，则直接返回
 		if move.nexts[level] != nil && move.nexts[level].key == target {
 			return move.nexts[level]
 		}
