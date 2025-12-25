@@ -39,3 +39,23 @@ func isPalindrome(s string) bool {
 	}
 	return true
 }
+
+// TODO 动态规划判断回文
+func buildPalindromeDP(s string) [][]bool {
+	n := len(s)
+	dp := make([][]bool, n)
+	for i := range dp {
+		dp[i] = make([]bool, n)
+	}
+
+	// 注意：i 从后往前
+	for i := n - 1; i >= 0; i-- {
+		for j := i; j < n; j++ {
+			if s[i] == s[j] && (j-i <= 1 || dp[i+1][j-1]) {
+				dp[i][j] = true
+			}
+		}
+	}
+
+	return dp
+}
