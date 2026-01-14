@@ -30,6 +30,8 @@ func genPermutations(index int, path, nums []int, result *[][]int, used *[]bool)
 
 	for i := 0; i < len(nums); i++ {
 		if !(*used)[i] {
+			// !(*used)[i-1]保证是同层的[false,true,false]表示同层前面的没取
+			// 如果不加会出现[true,true,false]把[1,1,2]这种正确的给过滤掉了
 			if i > 0 && (nums[i-1] == nums[i]) && !(*used)[i-1] {
 				continue
 			}
