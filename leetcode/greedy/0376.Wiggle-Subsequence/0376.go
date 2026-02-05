@@ -1,4 +1,4 @@
-package array
+package greedy
 
 // 摆动序列
 // 力扣：

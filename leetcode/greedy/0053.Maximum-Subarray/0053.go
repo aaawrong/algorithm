@@ -1,4 +1,4 @@
-package array
+package greedy
 
 // 最大子序和
 // 力扣：
