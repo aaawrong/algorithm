@@ -14,7 +14,7 @@ func jump(nums []int) int {
 		return 0
 	}
 
-	temp, cover, step := 0, 0, 0
+	temp, cover, step := 0, 0, 0 // temp记录下一个最大值
 	for i := 0; i < n; i++ {
 		temp = max(temp, i+nums[i])
 		if i == cover {
