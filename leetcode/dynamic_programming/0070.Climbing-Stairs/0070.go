@@ -1,4 +1,4 @@
-package greedy
+package dynamic_programming
 
 // 爬楼梯
 // 力扣：

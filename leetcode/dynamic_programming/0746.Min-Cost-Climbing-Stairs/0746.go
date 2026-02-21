@@ -1,4 +1,4 @@
-package greedy
+package dynamic_programming
 
 // 使用最小花费爬楼梯
 // 力扣：

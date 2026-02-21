@@ -1,4 +1,4 @@
-package greedy
+package dynamic_programming
 
 // 斐波那契数列
 // 力扣：

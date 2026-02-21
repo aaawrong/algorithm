@@ -1,1 +1,1 @@
-package greedy
+package dynamic_programming
