@@ -58,6 +58,7 @@ func canPartition2(nums []int) bool {
 			if j < nums[i] {
 				dp[i][j] = dp[i-1][j] // 当前容量 j 比 nums[i] 小，放不下这个数， 继承上一行的数据
 			} else {
+				// j-num[i]表示背包剩余容量
 				dp[i][j] = max(dp[i-1][j], dp[i-1][j-nums[i]]+nums[i]) // 取上一行的数据和当前行减去nums[i]的数据+nums[i]的最大值
 			}
 		}
