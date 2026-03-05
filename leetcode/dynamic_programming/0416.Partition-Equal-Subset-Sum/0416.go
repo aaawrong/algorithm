@@ -22,8 +22,8 @@ func canPartition(nums []int) bool {
 	target := sum / 2
 	dp := make([]int, target+1)
 
-	for _, num := range nums {
-		for j := target; j >= num; j-- { // 倒序遍历，每个 num 只会用一次，0/1背包，如果正序会用多次
+	for _, num := range nums { // 物品
+		for j := target; j >= num; j-- { // 背包倒序遍历，每个 num 只会用一次，0/1背包，如果正序会用多次
 			dp[j] = max(dp[j], dp[j-num]+num)
 		}
 	}
