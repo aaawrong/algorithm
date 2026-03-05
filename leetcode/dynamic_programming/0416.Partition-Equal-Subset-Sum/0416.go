@@ -20,9 +20,9 @@ func canPartition(nums []int) bool {
 	}
 
 	target := sum / 2
-	dp := make([]int, target+1)
+	dp := make([]int, target+1) // 在容量为 j 的情况下，当前能够凑出的总价值最大值
 
-	for _, num := range nums { // 物品
+	for _, num := range nums { // 物品价值
 		for j := target; j >= num; j-- { // 背包倒序遍历，每个 num 只会用一次，0/1背包，如果正序会用多次
 			dp[j] = max(dp[j], dp[j-num]+num)
 		}
