@@ -1,6 +1,6 @@
 package dynamic_programming
 
-// 目标和
+// 零钱兑换
 // 力扣:
 // https://leetcode.cn/problems/coin-change/description/
 // 随想录：
